@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8"><title>Business App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f6fa;--cd:#fff;--tx:#1b2330;--mu:#6b7686;--bd:#e3e8ef;--g:#16a34a;--gl:#e8f8ee;--r:#e11d48;--rl:#fdecef;--b:#2563eb;--bl:#e8f0fe;--p:#7c3aed;--pl:#f0e9fd}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#10151d;--cd:#1a212c;--tx:#e8edf5;--mu:#98a3b3;--bd:#2a3342;--gl:#12301f;--rl:#3a1620;--bl:#15264a;--pl:#2a1c4a}}
+:root[data-theme=dark]{--bg:#10151d;--cd:#1a212c;--tx:#e8edf5;--mu:#98a3b3;--bd:#2a3342;--gl:#12301f;--rl:#3a1620;--bl:#15264a;--pl:#2a1c4a}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--tx);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+#app{height:100%;max-width:480px;margin:auto;display:flex;flex-direction:column;background:var(--bg)}
+header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--cd);border-bottom:1px solid var(--bd)}
+header b{font-size:17px}header button,header span{width:32px;background:none;border:0;font-size:26px;color:var(--tx)}
+main{flex:1;overflow-y:auto;padding:14px 16px 24px}
+nav{display:flex;background:var(--cd);border-top:1px solid var(--bd)}
+nav button{flex:1;background:none;border:0;padding:8px 0 6px;color:var(--mu);font-size:11px}nav button span{display:block;font-size:19px}nav button.on{color:var(--b);font-weight:600}
+.mu{color:var(--mu)}small{color:var(--mu);font-size:12px}h4{margin:18px 0 8px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{border-radius:12px;padding:14px}.card b{font-size:21px;display:block}.card small{color:inherit;opacity:.85}
+.c-g{background:var(--gl);color:var(--g)}.c-r{background:var(--rl);color:var(--r)}.c-b{background:var(--bl);color:var(--b)}.c-p{background:var(--pl);color:var(--p)}
+.qa{border:0;border-radius:10px;padding:14px;color:#fff;font-size:16px;font-weight:600;text-align:left}.qa small{display:block;color:#fff;opacity:.85;font-weight:400}
+.bg{background:var(--g)}.br{background:var(--r)}.bb{background:var(--b)}.bp{background:var(--p)}
+.aib{width:100%;margin-top:10px;border:0;border-radius:10px;padding:16px;background:var(--bl);color:var(--tx);font-size:16px;font-weight:600}.aib small{display:block;font-weight:400}
+label{display:block;margin:14px 0 6px;font-weight:500}
+input,select,textarea{width:100%;padding:12px;border:1px solid var(--bd);border-radius:8px;background:var(--cd);color:var(--tx);font:inherit}textarea{min-height:80px}
+.btn{width:100%;margin-top:18px;border:0;border-radius:8px;padding:14px;font-size:16px;font-weight:600;color:#fff}.btn.o{background:none;border:1.5px solid var(--b);color:var(--b)}.btn.or{background:none;border:1.5px solid var(--r);color:var(--r)}
+.chips{display:flex;gap:8px}.chips button{flex:1;padding:11px;border:1px solid var(--bd);border-radius:6px;background:var(--cd);color:var(--tx)}.chips button.on{background:var(--g);color:#fff;border-color:var(--g)}
+.tabs{display:flex;border-bottom:1px solid var(--bd);margin:-4px -16px 12px;padding:0 8px;overflow-x:auto}.tabs button{background:none;border:0;padding:11px 12px;color:var(--mu);white-space:nowrap;border-bottom:2px solid transparent}.tabs button.on{color:var(--b);border-color:var(--b);font-weight:600}
+.row{display:flex;align-items:center;gap:12px;padding:12px;background:var(--cd);border-radius:10px;margin-bottom:8px;border:1px solid var(--bd)}.fl{flex:1;min-width:0}
+.av{width:42px;height:42px;border-radius:50%;background:var(--gl);color:var(--g);display:grid;place-items:center;font-weight:700}
+.x{background:none;border:0;font-size:18px;color:var(--mu)}.rt{text-align:right}.red{color:var(--r)}.grn{color:var(--g)}
+.sw{display:flex;align-items:center;justify-content:space-between;margin-top:14px}.sw input{width:22px;height:22px}
+.mic{width:120px;height:120px;border-radius:50%;border:0;background:var(--b);color:#fff;font-size:48px;display:block;margin:30px auto 10px;box-shadow:0 0 0 18px var(--bl)}
+.tip{background:var(--bl);border-radius:10px;padding:14px;margin-top:20px}.tip div{margin-top:6px}
+.cf{background:var(--gl);border-radius:12px;padding:18px}.cf p{display:flex;justify-content:space-between;margin:8px 0}
+.mod{position:fixed;inset:0;background:#0007;display:flex;align-items:flex-end;justify-content:center;z-index:9}.sheet{width:100%;max-width:480px;background:var(--cd);padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));border-radius:16px 16px 0 0}.sheet h3{margin:0}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#1b2330;color:#fff;padding:10px 16px;border-radius:20px;z-index:10}
+.mi{display:flex;justify-content:space-between;padding:14px 4px;border-bottom:1px solid var(--bd);width:100%;background:none;border-left:0;border-right:0;border-top:0;color:var(--tx);font-size:15px}
+</style></head><body><div id="app"></div>
+<script>
+const K='bizapp_v1';let S;try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
+S=S||{sales:[],exp:[],staff:[],parties:[],ledger:[],att:[]};
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const $=s=>document.querySelector(s),V=id=>(document.getElementById(id)||{}).value||'';
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const inr=n=>'₹ '+Number(n).toLocaleString('en-IN');
+const today=()=>new Date().toISOString().slice(0,10),uid=()=>Date.now()+Math.floor(Math.random()*999);
+const inR=(d,p)=>{const x=(new Date(today())-new Date(d))/864e5;return p=='Today'?x==0:p=='This Week'?x<7:p=='This Month'?x<30:true};
+const tot=(a,p)=>a.filter(x=>inR(x.d,p)).reduce((s,x)=>s+x.a,0);
+const pend=id=>S.ledger.filter(l=>l.p==id).reduce((s,l)=>s+(l.t=='purchase'?l.a:-l.a),0);
+const stN=id=>(S.staff.find(s=>s.id==id)||{n:'-'}).n,ptN=id=>(S.parties.find(s=>s.id==id)||{n:'-'}).n;
+let route=['home'],tab={},ctx={},pm='Cash',q='';
+const go=(r,c)=>{ctx=c||{};route.push(r);render()},back=()=>{route.pop();ctx={};render()},nv=r=>{route=[r];tab={};ctx={};render()};
+function toast(m){const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.append(t);setTimeout(()=>t.remove(),1900)}
+function modal(t,fs,ok,lbl){const d=document.createElement('div');d.className='mod';d.innerHTML=`<div class=sheet><h3>${t}</h3>${fs.map(f=>`<label>${f.l}</label>${f.t=='area'?`<textarea id=m_${f.k}></textarea>`:`<input id=m_${f.k} type=${f.t||'text'}>`}`).join('')}<button class="btn bg" id=mok>${lbl||'Save'}</button><button class="btn o" onclick="this.closest('.mod').remove()">Cancel</button></div>`;document.body.append(d);d.querySelector('#mok').onclick=()=>{const o={};fs.forEach(f=>o[f.k]=V('m_'+f.k));if(ok(o)!==false)d.remove()}}
+const tabs=(k,l)=>`<div class=tabs>${l.map(x=>`<button class="${(tab[k]||l[0])==x?'on':''}" onclick="tab.${k}='${x}';render()">${x}</button>`).join('')}</div>`;
+const card=(c,a,l)=>`<div class="card c-${c}"><b>${inr(a)}</b><small>${l}</small></div>`;
+const f=(l,h)=>`<label>${l}</label>${h}`;
+const stSel=(id,sel)=>`<select id=${id}>${S.staff.map(s=>`<option value=${s.id} ${s.id==sel?'selected':''}>${esc(s.n)} (${esc(s.r)})</option>`).join('')||'<option value="">Pehle Staff add karo</option>'}</select>`;
+const ptSel=id=>`<select id=${id}>${S.parties.map(s=>`<option value=${s.id} ${s.id==ctx.pid?'selected':''}>${esc(s.n)}</option>`).join('')||'<option value="">Pehle Party add karo</option>'}</select>`;
+const T={home:'Business App',cashin:'Cash In (Sale)',cashout:'Cash Out (Expense)',staff:'Staff',parties:'Creditors / Parties',ledger:'Party Ledger',ai:'AI Assistant',confirm:'Confirm Entry',reports:'Reports',menu:'Menu'};
+const NAV=[['home','🏠','Home'],['cashin','🧾','Sales'],['cashout','👜','Expenses'],['staff','👥','Staff'],['menu','⋯','More']];
+function render(){const r=route[route.length-1],top=route.length==1;
+setTimeout(()=>{if(r=='cashout')typ()});$('#app').innerHTML=`<header>${top?'<span></span>':'<button onclick="back()">‹</button>'}<b>${T[r]}</b><span></span></header><main>${SC[r]()}</main>${top?`<nav>${NAV.map(n=>`<button class="${n[0]==r?'on':''}" onclick="nv('${n[0]}')"><span>${n[1]}</span>${n[2]}</button>`).join('')}</nav>`:''}`}
+const SC={
+home(){const s=tot(S.sales,'Today'),e=tot(S.exp,'Today'),rc=S.parties.reduce((a,p)=>a+Math.max(0,pend(p.id)),0);
+return `<p class=mu>Today · ${new Date().toDateString()}</p><div class=g2>${card('g',s,'Cash In (Sales)')}${card('r',e,'Cash Out (Expenses)')}${card('b',s-e,'Net Cash')}${card('p',rc,'Pending (Creditors)')}</div>
+<h4>Quick Actions</h4><div class=g2><button class="qa bg" onclick="go('cashin')">＋ Cash In<small>(Sale)</small></button><button class="qa br" onclick="go('cashout')">－ Cash Out<small>(Expense)</small></button><button class="qa bb" onclick="go('staff')">👥 Staff<small>(Attendance/Payments)</small></button><button class="qa bp" onclick="go('parties')">📒 Creditors<small>(Parties/Ledger)</small></button></div>
+<button class=aib onclick="go('ai')">🎤 AI Assistant<small>Tap and Speak to Add Entry</small></button>`},
+cashin(){const c=ctx;return `${f('Amount *',`<input id=a type=number inputmode=decimal value="${c.a||''}">`)}${f('Select Staff (Salesman) *',stSel('s',c.s))}${f('Customer Mobile (Optional)','<input id=m type=tel>')}
+<div class=sw><span>Send on WhatsApp</span><input id=w type=checkbox checked></div>${f('Notes (Optional)',`<textarea id=n placeholder="e.g. Product, customer name etc.">${esc(c.n||'')}</textarea>`)}<button class="btn bg" onclick="saveSale()">Save Sale</button>`},
+cashout(){const c=ctx,ty=['Payment to Supplier','Salary / Advance','Office Expense','Other'];return `${f('Amount *','<input id=a type=number inputmode=decimal>')}${f('Select Type *',`<select id=t onchange="typ()">${ty.map(x=>`<option ${x==c.t?'selected':''}>${x}</option>`).join('')}</select>`)}
+<div id=pp>${f('Select Party / Supplier *',ptSel('p'))}</div><div id=ss style="display:none">${f('Select Staff *',stSel('sid'))}</div>
+${f('Payment Method',`<div class=chips>${['Cash','Bank','UPI'].map(x=>`<button class="${x==pm?'on':''}" onclick="pm='${x}';document.querySelectorAll('.chips button').forEach(b=>b.classList.toggle('on',b.textContent=='${x}'))">${x}</button>`).join('')}</div>`)}${f('Notes (Optional)','<input id=n>')}<button class="btn br" onclick="saveExp()">Save Expense</button>`},
+staff(){const t=tab.staff||'List';let h=tabs('staff',['List','Attendance','Payments']);
+if(t=='List')h+=`<button class="btn bb" style="margin:0 0 12px" onclick="addStaff()">＋ Add Staff</button>`+(S.staff.map(s=>`<div class=row><div class=av>${esc(s.n[0])}</div><div class=fl><b>${esc(s.n)}</b><br><small>${esc(s.r)} · ${esc(s.m)}</small></div><button class=x onclick="delStaff(${s.id})">🗑</button></div>`).join('')||'<p class=mu>Abhi koi staff nahi. Add Staff dabao.</p>');
+if(t=='Attendance')h+=`<p class=mu>Aaj ki hazri · ${today()}</p>`+(S.staff.map(s=>{const a=S.att.find(x=>x.s==s.id&&x.d==today());return `<div class=row><div class=av>${esc(s.n[0])}</div><div class=fl><b>${esc(s.n)}</b></div><div class=chips style="width:130px"><button class="${a&&a.st=='P'?'on':''}" onclick="setAtt(${s.id},'P');render()">P</button><button style="${a&&a.st=='A'?'background:var(--r);color:#fff':''}" onclick="setAtt(${s.id},'A');render()">A</button></div></div>`}).join('')||'<p class=mu>Pehle staff add karo.</p>');
+if(t=='Payments')h+=`<button class="btn bb" style="margin:0 0 12px" onclick="go('cashout',{t:'Salary / Advance'})">＋ Salary / Advance Do</button>`+(S.exp.filter(e=>e.sid).slice().reverse().map(e=>`<div class=row><div class=fl><b>${esc(stN(e.sid))}</b><br><small>${e.d} · ${e.m}</small></div><b class=red>- ${inr(e.a)}</b></div>`).join('')||'<p class=mu>Koi payment nahi.</p>');return h},
+parties(){return `<button class="btn bb" style="margin:0 0 12px" onclick="addParty()">＋ Add Party</button><input placeholder="Search party..." value="${esc(q)}" oninput="q=this.value;$('#pl').innerHTML=pl()" style="margin-bottom:12px"><div id=pl>${pl()}</div>`},
+ledger(){const p=S.parties.find(x=>x.id==ctx.pid);if(!p)return '';const L=S.ledger.filter(l=>l.p==p.id),pu=L.filter(l=>l.t=='purchase').reduce((s,l)=>s+l.a,0),pa=L.filter(l=>l.t=='payment').reduce((s,l)=>s+l.a,0),t=tab.led||'Transactions';
+let h=`<h3 style="margin:0 0 10px">${esc(p.n)}</h3><div class=g2 style="grid-template-columns:1fr 1fr 1fr">${card('b',pu,'Total Purchases')}${card('g',pa,'Total Payments')}${card('r',pu-pa,'Pending')}</div><div style="height:12px"></div>${tabs('led',['Transactions','Details'])}`;
+if(t=='Transactions')h+=`<div class=g2><button class="qa bb" onclick="addPur(${p.id})">＋ Purchase</button><button class="qa br" onclick="go('cashout',{t:'Payment to Supplier',pid:${p.id}})">－ Payment</button></div><div style="height:12px"></div>`+(L.slice().reverse().map(l=>`<div class=row><div class=fl><b>${l.t=='payment'?'Payment':'Purchase'}</b><br><small>${l.d} · ${esc(l.n||'')}</small></div><b class="${l.t=='payment'?'red':'grn'}">${l.t=='payment'?'-':'+'} ${inr(l.a)}</b><button class=x onclick="delL(${l.id})">🗑</button></div>`).join('')||'<p class=mu>Koi transaction nahi.</p>');
+else h+=`<div class=row><div class=fl><b>${esc(p.n)}</b><br><small>${esc(p.t)} · ${esc(p.m||'No mobile')}</small></div></div>`;return h},
+ai(){return `<button class=mic onclick="listen()">🎤</button><p id=ls class=rt style="text-align:center;color:var(--b);font-weight:600">Tap mic and speak</p><p class=mu style="text-align:center">(Sale, Expense, Payment, Attendance)</p>${f('Ya yahan type karo','<input id=tx placeholder="1350 ka customer Rakesh ne banaya">')}<button class="btn bb" onclick="proc(V('tx'))">Entry Banao</button>
+<div class=tip><b>Try saying:</b><div>"1350 ka customer Rakesh ne banaya"</div><div>"17000 Shyam Sales ko payment diya"</div><div>"500 office kharcha"</div><div>"Rakesh ki aaj attendance lagao"</div></div>`},
+confirm(){const p=ctx,R=(a,b)=>`<p><span class=mu>${a}</span><b>${esc(b)}</b></p>`,K={sale:'Cash In (Sale)',exp:'Cash Out (Expense)',pay:'Cash Out (Payment)',att:'Attendance'};
+return `<div class=cf><h3 style="text-align:center;margin:0 0 8px">Did you say this?</h3>${R('Type',K[p.k])}${p.amt?R('Amount',inr(p.amt)):''}${p.st?R('Staff',p.st.n):''}${p.pt?R('Party',p.pt.n):''}${R('Notes',p.say)}</div><button class="btn bg" onclick="doSave()">Yes, Save</button><button class="btn o" onclick="edit()">Edit</button><button class="btn or" onclick="nv('home')">Cancel</button>`},
+reports(){const p=tab.rep||'Today',s=tot(S.sales,p),e=tot(S.exp,p),rc=S.parties.reduce((a,x)=>a+Math.max(0,pend(x.id)),0);
+const bs=S.staff.map(x=>({n:x.n,a:S.sales.filter(y=>y.s==x.id&&inR(y.d,p)).reduce((a,y)=>a+y.a,0)})).sort((a,b)=>b.a-a.a);
+const rec=[...S.sales.map(x=>({...x,k:'s'})),...S.exp.map(x=>({...x,k:'e'}))].filter(x=>inR(x.d,p)).sort((a,b)=>b.id-a.id).slice(0,15);
+return `${tabs('rep',['Today','This Week','This Month','All'])}<div class=g2>${card('g',s,'Total Sales (Cash In)')}${card('r',e,'Total Expenses (Cash Out)')}${card('b',s-e,'Net Cash')}${card('p',rc,'Pending Receivables')}</div><h4>Sales by Staff</h4>${bs.map((x,i)=>`<div class=row><span>${i+1}.</span><div class=fl>${esc(x.n)}</div><b>${inr(x.a)}</b></div>`).join('')||'<p class=mu>Koi staff nahi.</p>'}<h4>Recent Entries</h4>${rec.map(x=>`<div class=row><div class=fl><b>${x.k=='s'?'Sale':esc(x.t)}</b><br><small>${x.d} · ${esc(x.n||'')}</small></div><b class="${x.k=='s'?'grn':'red'}">${x.k=='s'?'+':'-'} ${inr(x.a)}</b><button class=x onclick="delE('${x.k}',${x.id})">🗑</button></div>`).join('')||'<p class=mu>Koi entry nahi.</p>'}`},
+menu(){const I=[['Dashboard',"nv('home')"],['Sales (Cash In)',"go('cashin')"],['Expenses (Cash Out)',"go('cashout')"],['Staff',"go('staff')"],['Creditors / Parties',"go('parties')"],['Reports',"go('reports')"],['AI Assistant',"go('ai')"],['Backup (Copy data)','backup()'],['Restore (Paste data)','restore()'],['Dark / Light Mode','theme()'],['Reset All Data','reset()']];
+return `<div class=row style="margin-bottom:10px"><div class=av style="background:var(--bl);color:var(--b)">B</div><div><b>Business App</b><br><small>Your Business Companion</small></div></div>`+I.map(i=>`<button class=mi onclick="${i[1]}">${i[0]}<span>›</span></button>`).join('')}};
+function typ(){const t=V('t');$('#pp').style.display=t=='Payment to Supplier'?'':'none';$('#ss').style.display=t=='Salary / Advance'?'':'none'}
+const pl=()=>S.parties.filter(p=>p.n.toLowerCase().includes(q.toLowerCase())).map(p=>{const d=pend(p.id);return `<div class=row onclick="go('ledger',{pid:${p.id}})"><div class=av style="background:var(--bd);color:var(--tx)">${esc(p.n.slice(0,2).toUpperCase())}</div><div class=fl><b>${esc(p.n)}</b><br><small>${esc(p.t)}</small></div><div class=rt><b class="${d>0?'red':'grn'}">${inr(d)}</b><br><small>${d>0?'Pending':'Settled'}</small></div></div>`}).join('')||'<p class=mu>Koi party nahi. Add Party dabao.</p>';
+function saveSale(){const a=+V('a');if(!a)return toast('Amount daalo');const e={id:uid(),a,s:+V('s')||0,m:V('m'),n:V('n'),d:today()};S.sales.push(e);save();
+if($('#w').checked&&e.m){const t=`Dhanyavaad! Aapki ₹${a} ki kharidari darj ho gayi hai.`;try{window.open('https://wa.me/91'+e.m.replace(/\D/g,'').slice(-10)+'?text='+encodeURIComponent(t),'_blank')}catch(x){}}
+toast('Sale save ho gayi');route.length>1?back():render()}
+function addPayment(a,pid,n,m,extra){const e={id:uid(),a,t:'Payment to Supplier',p:pid,m:m||'Cash',n:n||'',d:today(),...extra};S.exp.push(e);S.ledger.push({id:e.id,p:pid,t:'payment',a,d:e.d,n:n||'Payment',m:e.m});save()}
+function saveExp(){const a=+V('a');if(!a)return toast('Amount daalo');const t=V('t');
+if(t=='Payment to Supplier'){if(!V('p'))return toast('Party chuno');addPayment(a,+V('p'),V('n'),pm)}
+else{const e={id:uid(),a,t,m:pm,n:V('n'),d:today()};if(t=='Salary / Advance'){if(!V('sid'))return toast('Staff chuno');e.sid=+V('sid')}S.exp.push(e);save()}
+toast('Expense save ho gaya');route.length>1?back():render()}
+function addStaff(){modal('Add Staff',[{k:'n',l:'Name'},{k:'r',l:'Role (Salesman / Cashier)'},{k:'m',l:'Mobile',t:'tel'}],o=>{if(!o.n)return false;S.staff.push({id:uid(),n:o.n,r:o.r||'Salesman',m:o.m});save();render()})}
+function addParty(){modal('Add Party',[{k:'n',l:'Party Name'},{k:'t',l:'Type (Supplier / Customer)'},{k:'m',l:'Mobile',t:'tel'}],o=>{if(!o.n)return false;S.parties.push({id:uid(),n:o.n,t:o.t||'Supplier',m:o.m});save();render()})}
+function addPur(pid){modal('Add Purchase',[{k:'a',l:'Amount',t:'number'},{k:'n',l:'Bill no. / Notes'}],o=>{if(!+o.a)return false;S.ledger.push({id:uid(),p:pid,t:'purchase',a:+o.a,d:today(),n:o.n||'Purchase'});save();render()})}
+function delStaff(id){modal('Staff delete karna hai?',[],()=>{S.staff=S.staff.filter(s=>s.id!=id);save();render()},'Haan, Delete')}
+function delL(id){modal('Entry delete karni hai?',[],()=>{S.ledger=S.ledger.filter(l=>l.id!=id);S.exp=S.exp.filter(e=>e.id!=id);save();render()},'Haan, Delete')}
+function delE(k,id){modal('Entry delete karni hai?',[],()=>{if(k=='s')S.sales=S.sales.filter(x=>x.id!=id);else{S.exp=S.exp.filter(x=>x.id!=id);S.ledger=S.ledger.filter(x=>x.id!=id)}save();render()},'Haan, Delete')}
+function setAtt(s,st){S.att=S.att.filter(x=>!(x.s==s&&x.d==today()));S.att.push({s,st,d:today()});save()}
+function parse(t){const l=t.toLowerCase(),n=(l.match(/\d[\d,]*/)||[])[0],amt=n?+n.replace(/,/g,''):0,
+st=S.staff.find(s=>l.includes(s.n.toLowerCase())),pt=S.parties.find(p=>l.includes(p.n.toLowerCase().split(' ')[0]));
+if(/attendance|hazri|haziri/.test(l)&&st)return{k:'att',st,say:t};
+if(pt&&amt&&/payment|diya|diye|pay|bhej/.test(l))return{k:'pay',amt,pt,say:t};
+if(amt&&/kharcha|kharch|expense/.test(l))return{k:'exp',amt,say:t};
+if(amt)return{k:'sale',amt,st,say:t}}
+function listen(){const R=window.SpeechRecognition||window.webkitSpeechRecognition;if(!R)return toast('Voice yahan nahi chalta, Chrome use karo ya type karo');const r=new R();r.lang='hi-IN';$('#ls').textContent='Listening...';r.onresult=e=>proc(e.results[0][0].transcript);r.onerror=()=>{$('#ls').textContent='Mic allow karo';toast('Mic permission do')};r.start()}
+function proc(t){if(!t.trim())return toast('Kuch bolo ya likho');const p=parse(t);if(!p)return toast('Samajh nahi aaya. Amount ke saath bolo');go('confirm',p)}
+function doSave(){const p=ctx;if(p.k=='sale')S.sales.push({id:uid(),a:p.amt,s:p.st?p.st.id:0,m:'',n:p.say,d:today()});
+if(p.k=='exp')S.exp.push({id:uid(),a:p.amt,t:'Office Expense',m:'Cash',n:p.say,d:today()});
+if(p.k=='pay')addPayment(p.amt,p.pt.id,p.say,'Cash');if(p.k=='att')setAtt(p.st.id,'P');save();toast('Save ho gaya');nv('home')}
+function edit(){const p=ctx;route.pop();if(p.k=='sale')go('cashin',{a:p.amt,s:p.st&&p.st.id,n:p.say});else if(p.k=='att')go('staff');else go('cashout',{t:p.k=='pay'?'Payment to Supplier':'Office Expense',pid:p.pt&&p.pt.id})}
+function backup(){const j=JSON.stringify(S);try{navigator.clipboard.writeText(j).then(()=>toast('Data copy ho gaya. Kahin paste karke rakh lo'))}catch(e){toast('Copy nahi hua')}}
+function restore(){modal('Backup data paste karo',[{k:'d',l:'Data',t:'area'}],o=>{try{S=JSON.parse(o.d);save();nv('home');toast('Restore ho gaya')}catch(e){toast('Data galat hai');return false}},'Restore')}
+function theme(){const r=document.documentElement,d=r.dataset.theme=='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);r.dataset.theme=d?'light':'dark'}
+function reset(){modal('Saara data delete ho jayega!',[],()=>{S={sales:[],exp:[],staff:[],parties:[],ledger:[],att:[]};save();nv('home')},'Haan, Sab Delete')}
+render();
+</script></body></html>
